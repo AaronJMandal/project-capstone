@@ -1,16 +1,21 @@
-import { useEffect, useState } from "react";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import LandingPage from "./components/LandingPage";
 import "./App.css";
 
 function App() {
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    fetch("/hello-world")
-      .then((res) => res.json())
-      .then((data) => setMessage(data));
-  }, []);
-
-  return <div className="App">{message}</div>;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
