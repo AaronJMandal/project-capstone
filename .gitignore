@@ -1,0 +1,25 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Directory for environment variables
+.env
+
+# React build directory
+frontend/build/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Optional npm/yarn cache
+.npm/
+.yarn/
