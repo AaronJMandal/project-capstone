@@ -1,13 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { Auth0Provider } from "@auth0/auth0-react";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Auth0Provider
+      domain="dev-as4r7h34b1gbix7e.us.auth0.com"
+      clientId="sJ2bu4kyRPQOkQZiFDLwuyj65JULihwS"
+      authorizationParams={{
+        redirect_uri: "http://localhost:3000/dashboard",
+      }}
+    >
+      <App />
+    </Auth0Provider>
   </React.StrictMode>
 );
 

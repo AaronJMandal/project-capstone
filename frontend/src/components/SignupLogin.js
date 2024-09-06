@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./SignupLogin.css";
+import LoginButton from "./LoginButton";
 
 const SignupLogin = () => {
   const [signUpLogin, setSignUpLogin] = useState("signup");
@@ -16,7 +17,11 @@ const SignupLogin = () => {
       password: Yup.string().required("Password is required"),
     }),
     onSubmit: (values) => {
-      console.log("Form data", values);
+      if (SignupLogin === "login") {
+        console.log("Triggering Login");
+      } else {
+        console.log("Form data", values);
+      }
     },
   });
 
@@ -73,7 +78,7 @@ const SignupLogin = () => {
             {signUpLogin === "login" && (
               <div>
                 <button onClick={changeToSignUp}>Signup</button>
-                <button type="submit">Login</button>
+                <LoginButton />
               </div>
             )}
           </div>
