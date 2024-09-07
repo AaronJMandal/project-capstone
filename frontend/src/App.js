@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import SignupLogin from "./components/SignupLogin";
+import Dashboard from "./components/Dashboard";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<SignupLogin />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );

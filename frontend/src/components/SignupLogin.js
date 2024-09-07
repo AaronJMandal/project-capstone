@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./SignupLogin.css";
 import LoginButton from "./LoginButton";
+import axios from "axios";
 
 const SignupLogin = () => {
   const [signUpLogin, setSignUpLogin] = useState("signup");
@@ -16,11 +17,44 @@ const SignupLogin = () => {
       email: Yup.string().required("E-mail is required"),
       password: Yup.string().required("Password is required"),
     }),
-    onSubmit: (values) => {
-      if (SignupLogin === "login") {
-        console.log("Triggering Login");
-      } else {
-        console.log("Form data", values);
+    onSubmit: async (values) => {
+      try {
+        if (signUpLogin === "login") {
+          await axios.post(
+            `https://dev-as4r7h34b1gbix7e.us.auth0.com/oauth/token`,
+            {
+              grant_type: "password",
+              username: values.email,
+              password: values.password,
+              client_id: "sJ2bu4kyRPQOkQZiFDLwuyj65JULihwS",
+              scope: "openid profile email",
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          window.location.href = "http://localhost:3000/dashboard";
+        } else {
+          await axios.post(
+            `https://dev-as4r7h34b1gbix7e.us.auth0.com/dbconnections/signup`,
+            {
+              client_id: "sJ2bu4kyRPQOkQZiFDLwuyj65JULihwS",
+              connection: "Username-Password-Authentication",
+              email: values.email,
+              password: values.password,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          window.location.href = "http://localhost:3000/login";
+        }
+      } catch (error) {
+        console.error("Authentication error:", error);
       }
     },
   });
