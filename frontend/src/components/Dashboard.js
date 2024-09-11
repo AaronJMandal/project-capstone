@@ -1,14 +1,31 @@
-import { useAuth0 } from "@auth0/auth0-react";
+import { jwtDecode } from "jwt-decode";
+import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
+
 const Dashboard = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-  if (isLoading) {
-    return <div>Loading...</div>;
+  const token = localStorage.getItem("id_token");
+  console.log(token);
+  if (token) {
+    try {
+      const decodedToken = jwtDecode(token);
+      console.log(decodedToken);
+      return (
+        <div>
+          Welcome, {decodedToken.email}
+          <LogoutButton />
+        </div>
+      );
+    } catch (error) {
+      console.error("Invalid token", error);
+    }
+  } else {
+    console.error("No token found");
   }
+
   return (
     <div>
-      <h1>Hello {user.name}!</h1>
-      {isAuthenticated && <LogoutButton />}
+      Please log in here
+      <LoginButton />
     </div>
   );
 };
