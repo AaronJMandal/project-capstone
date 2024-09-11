@@ -4,19 +4,14 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { AuthContext, AuthProvider } from "./components/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Auth0Provider
-      domain="dev-as4r7h34b1gbix7e.us.auth0.com"
-      clientId="sJ2bu4kyRPQOkQZiFDLwuyj65JULihwS"
-      authorizationParams={{
-        redirect_uri: "http://localhost:3000/dashboard",
-      }}
-    >
+    <AuthProvider>
       <App />
-    </Auth0Provider>
+    </AuthProvider>
   </React.StrictMode>
 );
 

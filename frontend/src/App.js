@@ -9,6 +9,7 @@ import LandingPage from "./components/LandingPage";
 import SignupLogin from "./components/SignupLogin";
 import Dashboard from "./components/Dashboard";
 import "./App.css";
+import SignupConfirm from "./components/SignupConfirm";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<SignupLogin />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/confirm" element={<SignupConfirm />} />
       </Routes>
     </Router>
   );
