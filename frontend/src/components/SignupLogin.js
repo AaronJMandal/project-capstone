@@ -108,6 +108,13 @@ const SignupLogin = () => {
                   Signup
                 </button>
                 <button type="submit">Login</button>
+                <button
+                  onClick={() => {
+                    console.log(localStorage.getItem("access_token"));
+                  }}
+                >
+                  test token
+                </button>
                 {/* <LoginButton /> */}
               </div>
             )}
