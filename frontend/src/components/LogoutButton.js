@@ -7,6 +7,8 @@ const LogoutButton = () => {
     <div>
       <button
         onClick={() => {
+          localStorage.removeItem("access_token");
+          localStorage.removeItem("id_token");
           navigate("/login");
         }}
       >
