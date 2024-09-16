@@ -1,11 +1,15 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+const header = require("../imgs/spiritsandsuch-header.png");
+const reig = require("../imgs/reig.png");
+
 const LandingPage = () => {
   return (
     <DivContainer>
-      <H1>★ ☆Spirits & Such Consultation★ ☆</H1>
+      <img src={header}></img>
       <H2>The GREATEST psychic of the 21st century!!</H2>
+      <img src={reig} style={{ maxWidth: "500px" }}></img>
       <Link to="/login">➡➡ ENTER HERE ⬅⬅</Link>
     </DivContainer>
   );
