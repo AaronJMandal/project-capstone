@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
@@ -7,7 +6,7 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userToken, setUserToken] = useState(null);
 
-  const [isLoading, setIsLoading] = useState("false");
+  // const [isLoading, setIsLoading] = useState("false");
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");

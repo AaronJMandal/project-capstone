@@ -10,8 +10,7 @@ const IntroBoxes = () => {
       <GridWrap>
         <GridBox>
           <WhiteStroke>
-            {" "}
-            Hello, I'm Reigen Arataka, the new star of the psychic world!{" "}
+            Hello, I'm Reigen Arataka, the new star of the psychic world!
           </WhiteStroke>
           <br></br>
           <WhiteStroke>
@@ -31,9 +30,9 @@ const IntroBoxes = () => {
       </GridWrap>
 
       <GridWrap>
-        <GridBox bgColor="lightblue">
+        <GridBox bgcolor="lightblue">
           <CustomGridBox>
-            <img src={harm} style={{ maxWidth: "300px" }}></img>
+            <img src={harm} alt="harm" style={{ maxWidth: "300px" }}></img>
             <br></br>
             <span style={{ color: "#CF524E" }}>
               Those of you troubled with "spiritual harm", are they causing you
@@ -45,25 +44,27 @@ const IntroBoxes = () => {
             etc...
           </CustomGridBox>
         </GridBox>
-        <GridBox bgColor="rgba(245, 251, 133)">
+        <GridBox bgcolor="rgba(245, 251, 133)">
           <img src={love} alt="loved" style={{ maxWidth: "350px" }}></img>
-          <p>
-            <span style={{ color: "darkred" }}>
-              Do you want to hear the voice of your loved one again...? Those
-              able to do "seances"
-            </span>{" "}
-            <span style={{ color: "#357847" }}>
-              are considered modern-day necromancers. Why not put an end to
-              those pesky inheritance battles?
-            </span>
-          </p>
+          <span style={{ color: "darkred" }}>
+            Do you want to hear the voice of your loved one again...? Those able
+            to do "seances"
+          </span>{" "}
+          <span style={{ color: "#357847" }}>
+            are considered modern-day necromancers. Why not put an end to those
+            pesky inheritance battles?
+          </span>
         </GridBox>
       </GridWrap>
 
       <GridWrap>
-        <GridBox bgColor="#ACD657">
+        <GridBox bgcolor="#ACD657">
           <CustomGridBox>
-            <img src={photo} style={{ maxWidth: "250px" }}></img>
+            <img
+              src={photo}
+              style={{ maxWidth: "250px" }}
+              alt="phototext"
+            ></img>
             <br></br>
             <span style={{ color: "darkgreen", fontSize: "1.1em" }}>
               Spirit Photography Evaluation
@@ -88,9 +89,9 @@ const GridWrap = styled.div`
   margin: 2rem;
 `;
 
-const GridBox = styled.p`
+const GridBox = styled.div`
   padding: 1.8em;
-  background: ${(props) => props.bgColor || "#d5969e"};
+  background: ${(props) => props.bgcolor || "#d5969e"};
   font-weight: 500;
   font-size: 1.5em;
   max-width: 25ch;

@@ -7,9 +7,9 @@ const reig = require("../imgs/reig.png");
 const LandingPage = () => {
   return (
     <DivContainer>
-      <img src={header}></img>
+      <img src={header} alt="header"></img>
       <H2>The GREATEST psychic of the 21st century!!</H2>
-      <img src={reig} style={{ maxWidth: "500px" }}></img>
+      <img src={reig} style={{ maxWidth: "500px" }} alt="reig"></img>
       <Link to="/login">➡➡ ENTER HERE ⬅⬅</Link>
     </DivContainer>
   );
@@ -22,10 +22,6 @@ const DivContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
-
-const H1 = styled.h1`
-  margin: 10px;
 `;
 
 const H2 = styled.h2`

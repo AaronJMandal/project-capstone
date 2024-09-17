@@ -1,21 +1,31 @@
 import DashboardAuth from "./DashboardAuth";
 import styled from "styled-components";
 import IntroBoxes from "./IntroBoxes";
+import LiveExorcism from "./LiveExorcism";
+import { useContext } from "react";
+import { AuthContext } from "./AuthContext";
 
 const headGif = require("../imgs/head.gif");
 const arrowGif = require("../imgs/arrowgif.gif");
 
 const Dashboard = () => {
+  const { isAuthenticated } = useContext(AuthContext);
+
   return (
     <div>
       <DashboardAuth />
-      <Container>
-        <img src={headGif} alt="Spirits and Such Consultation Office"></img>
-      </Container>
-      <IntroBoxes />
-      <CenteredDiv>
-        <img src={arrowGif}></img>
-      </CenteredDiv>
+      {isAuthenticated && (
+        <>
+          <Container>
+            <img src={headGif} alt="Spirits and Such Consultation Office"></img>
+          </Container>
+          <IntroBoxes />
+          <CenteredDiv>
+            <img src={arrowGif} alt="arrow" style={{ height: "150px" }}></img>
+          </CenteredDiv>
+          <LiveExorcism />
+        </>
+      )}
     </div>
   );
 };
