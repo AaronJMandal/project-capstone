@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./SignupLogin.css";
-import LoginButton from "./LoginButton";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -43,9 +42,9 @@ const SignupLogin = () => {
           navigate("/dashboard");
         }
       } catch (error) {
-        const policy = error.response.data.policy;
-        setErrors(policy);
         console.error("Error found:", error);
+        // const policy = error.response.data.policy;
+        setErrors(error);
       }
     },
   });
@@ -81,6 +80,9 @@ const SignupLogin = () => {
             {formik.errors.email && formik.touched.email ? (
               <div className="error">{formik.errors.email}</div>
             ) : null}
+            {errors && (
+              <div className="error">{errors.response.data.message}</div>
+            )}
           </div>
           <div className="input">
             <input
@@ -109,6 +111,7 @@ const SignupLogin = () => {
                 </button>
                 <button type="submit">Login</button>
                 <button
+                  type="button"
                   onClick={() => {
                     console.log(localStorage.getItem("access_token"));
                   }}
