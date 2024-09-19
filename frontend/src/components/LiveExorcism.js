@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { FaCameraRetro } from "react-icons/fa6";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { MdArrowOutward } from "react-icons/md";
 
 const reigenNerv = require("../imgs/reigennerv.gif");
@@ -10,6 +10,17 @@ const LiveExorcism = () => {
   const navigate = useNavigate();
 
   const [isClicked, setIsClicked] = useState(false);
+  const fileInputRef = useRef(null);
+
+  const handleButtonClick = () => {
+    if (!fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleFileChange = () => {
+    navigate("/exorcist");
+  };
 
   return (
     <>
@@ -20,17 +31,28 @@ const LiveExorcism = () => {
             setIsClicked(true);
           }}
         >
-          Need an live graphical live exocism? I'm the man for you!
+          Need an graphical live exocism? I'm the man for you!
           <CustomArrow />
         </GridBox>
-        <GridBoxButton
-          as="button"
-          onClick={() => {
-            navigate("/joe");
-          }}
-        >
-          Upload image here!
-          <CustomCamera />
+
+        <GridBoxButton as="button" onClick={handleButtonClick}>
+          <Label
+            htmlFor="file-upload"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            Upload image here!
+            <CustomCamera />
+            <input
+              type="file"
+              id="file-upload"
+              ref={fileInputRef}
+              onChange={handleFileChange}
+              accept="image/png,image/jpeg"
+              style={{ display: "none" }}
+            ></input>
+          </Label>
         </GridBoxButton>
         <img alt="gif" src={reigenNerv} style={{ width: "150px" }}></img>
       </Wrapper>
@@ -52,7 +74,7 @@ const GridBox = styled.div`
   transition: left 1s ease-out, transform 1s ease-out;
   left: ${({ clicked }) => (clicked ? "-1000px" : "50%")};
   transform: ${({ clicked }) => (clicked ? "none" : "translateX(-50%)")};
-  padding: 1.8em;
+  padding: 1.9em;
   color: #a7ff42;
   background: #9a42ff;
   font-weight: 500;
@@ -63,6 +85,7 @@ const GridBox = styled.div`
   text-align: center;
   z-index: 10;
   cursor: pointer;
+  margin: 10px;
 `;
 
 const GridBoxButton = styled.div`
@@ -78,6 +101,20 @@ const GridBoxButton = styled.div`
   border: solid teal;
   text-decoration: none;
   z-index: 5;
+`;
+
+const Label = styled.label`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+
+  input {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const CustomCamera = styled(FaCameraRetro)`
