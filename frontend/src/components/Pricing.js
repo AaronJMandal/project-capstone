@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 const curse = require("../imgs/curse.png");
 const calm = require("../imgs/reigencalm.gif");
+const background = require("../imgs/windowsxp1.png");
 
 const Pricing = () => {
   return (
     <div>
       <GridWrap>
         <GridBox bgcolor="#D69829">
-          <img alt="curse" src={curse}></img>
+          <img style={{ marginTop: "130px" }} alt="curse" src={curse}></img>
           <h3> Let the clensing begin!!</h3>
           <br></br>
           <ul style={{ color: "black", lineHeight: "50px" }}>
@@ -42,14 +43,17 @@ const GridWrap = styled.div`
 
 const GridBox = styled.div`
   padding: 1.8em;
-  background: ${(props) => props.bgcolor || "#E0EAF8"};
+  // background: ${(props) => props.bgcolor || "#E0EAF8"};
+  background: url(${background});
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   color: #35e718;
   font-weight: 500;
   font-size: 1.5em;
-  //   max-width: 25ch;
+  height: 445px;
   border-radius: 3px;
   line-height: 110%;
-  border: solid 3px red;
+  // border: solid 3px red;
   text-align: left;
   //   box-shadow: 20px 15px teal;
 `;
