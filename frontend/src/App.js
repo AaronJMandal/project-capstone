@@ -11,6 +11,7 @@ import Dashboard from "./components/Dashboard";
 import "./App.css";
 import SignupConfirm from "./components/SignupConfirm";
 import GraphicExorcism from "./components/GraphicExorcism";
+import BookAppointment from "./components/BookAppointment";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/confirm" element={<SignupConfirm />} />
         <Route path="/exorcist" element={<GraphicExorcism />} />
+        <Route path="/book" element={<BookAppointment />} />
       </Routes>
     </Router>
   );

@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import "./SignupLogin.css";
+
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+const background = require("../imgs/windowxp.png");
 const apiBaseUrl = "http://localhost:3010";
 
 const SignupLogin = () => {
@@ -58,84 +59,144 @@ const SignupLogin = () => {
   };
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <div className="container">
-        {formState === "signup" ? (
-          <div className="header">
-            <div className="text">Need an account? Sign up here!</div>
-          </div>
-        ) : (
-          <div className="header">
-            <div className="text">Login</div>
-          </div>
-        )}
-        <div className="inputs">
-          <div className="input">
-            <input
+    <FormContainer onSubmit={formik.handleSubmit}>
+      <Container>
+        <Header>
+          {formState === "signup" ? "Need an account? Sign up here!" : "Login"}
+        </Header>
+        <Inputs>
+          <InputField>
+            <Input
               type="email"
               id="email"
               {...formik.getFieldProps("email")}
               placeholder="Email Address"
-            ></input>
-            {formik.errors.email && formik.touched.email ? (
-              <div className="error">{formik.errors.email}</div>
-            ) : null}
-            {errors && (
-              <div className="error">{errors.response.data.message}</div>
+            />
+            {formik.errors.email && formik.touched.email && (
+              <Error>{formik.errors.email}</Error>
             )}
-          </div>
-          <div className="input">
-            <input
+            {errors && <Error>{errors.response.data.message}</Error>}
+          </InputField>
+          <InputField>
+            <Input
               type="password"
               id="password"
               placeholder="Password"
               {...formik.getFieldProps("password")}
-            ></input>
-            {formik.errors.password && formik.touched.password ? (
-              <div className="error">{formik.errors.password}</div>
-            ) : null}
-          </div>
-          <div className="buttons">
-            {formState === "signup" && (
-              <div>
-                <button type="submit">Signup</button>
-                <button type="button" onClick={changeToLogin}>
+            />
+            {formik.errors.password && formik.touched.password && (
+              <Error>{formik.errors.password}</Error>
+            )}
+          </InputField>
+          <Buttons>
+            {formState === "signup" ? (
+              <>
+                <Button type="submit">Signup</Button>
+                <Button type="button" onClick={changeToLogin}>
                   Login
-                </button>
-              </div>
-            )}
-            {formState === "login" && (
-              <div>
-                <button type="button" onClick={changeToSignUp}>
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button type="button" onClick={changeToSignUp}>
                   Signup
-                </button>
-                <button type="submit">Login</button>
-                <button
+                </Button>
+                <Button type="submit">Login</Button>
+                <Button
                   type="button"
-                  onClick={() => {
-                    console.log(localStorage.getItem("access_token"));
-                  }}
+                  onClick={() =>
+                    console.log(localStorage.getItem("access_token"))
+                  }
                 >
-                  test token
-                </button>
-                {/* <LoginButton /> */}
-              </div>
+                  Test Token
+                </Button>
+              </>
             )}
-          </div>
-        </div>
-      </div>
+          </Buttons>
+        </Inputs>
+      </Container>
 
-      <PasswordReq className="error">
+      <PasswordReq>
         '* At least 8 characters in length\n' + '* Contain at least 3 of the
         following 4 types of characters:\n' + ' * lower case letters (a-z)\n' +
         ' * upper case letters (A-Z)\n' + ' * numbers (i.e. 0-9)\n' + ' *
         special characters (e.g. !@#$%^&*)',
       </PasswordReq>
-    </form>
+    </FormContainer>
   );
 };
 
 export default SignupLogin;
+
+// Styled Components
+const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url(${background});
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 5rem;
+  padding: 4rem;
+  height: 400px;
+  width: 500px;
+  max-width: 600px;
+  border-radius: 3%;
+  font-size: large;
+`;
+
+const Header = styled.div`
+  font-weight: bold;
+  margin-bottom: 3em;
+`;
+
+const Inputs = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const InputField = styled.div`
+  margin: 1rem;
+`;
+
+const Input = styled.input`
+  padding: 5px 30px;
+  border-radius: 4px;
+  background: white;
+  opacity: 0.9;
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1rem;
+`;
+
+const Button = styled.button`
+  background: rgba(0, 255, 255, 0.7);
+  border-radius: 3px;
+  padding: 3px;
+  margin: 10px;
+  color: ivory;
+  font-weight: 600;
+`;
+
+const Error = styled.div`
+  background: coral;
+  padding: 5px;
+  margin-top: 5px;
+`;
 
 const PasswordReq = styled.div`
   position: absolute;
