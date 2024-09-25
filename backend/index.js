@@ -3,6 +3,7 @@ const axios = require("axios");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config({ path: "../.env" });
+const { submitAppointment } = require("./handlers/submitAppointment");
 
 const app = express();
 const corsOptions = {
@@ -85,6 +86,8 @@ app.get("/api/public", function (req, res) {
       "Hello from a public endpoint! You don't need to be authenticated to see this.",
   });
 });
+
+app.post("/book-appointment", submitAppointment);
 
 app.options("*", cors(corsOptions));
 

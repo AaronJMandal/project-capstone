@@ -2,10 +2,13 @@ import styled, { keyframes } from "styled-components";
 import video from "../video/live-exorcist.mp4";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-
+import { useContext } from "react";
+import { AuthContext } from "./AuthContext";
+import LoginButton from "./LoginButton";
 const GraphicExorcism = () => {
   const [videoEnded, setVideoEnded] = useState(null);
 
+  const { isAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleHomepage = () => {
@@ -14,26 +17,35 @@ const GraphicExorcism = () => {
 
   return (
     <>
-      <Container>
-        <video
-          muted
-          width="1280"
-          height="720"
-          controls
-          onEnded={() => {
-            setVideoEnded(true);
-          }}
-        >
-          <source src={video} type="video/mp4"></source>
-        </video>
+      {isAuthenticated ? (
+        <>
+          <Container>
+            <video
+              muted
+              width="1280"
+              height="720"
+              controls
+              onEnded={() => {
+                setVideoEnded(true);
+              }}
+            >
+              <source src={video} type="video/mp4"></source>
+            </video>
 
-        {videoEnded && (
-          <Wrapper>
-            <Finished>Photo has been succesfully exorcised!</Finished>
-            <GridBox onClick={handleHomepage}>Back to dashboard</GridBox>
-          </Wrapper>
-        )}
-      </Container>
+            {videoEnded && (
+              <Wrapper>
+                <Finished>Photo has been succesfully exorcised!</Finished>
+                <GridBox onClick={handleHomepage}>Back to dashboard</GridBox>
+              </Wrapper>
+            )}
+          </Container>
+        </>
+      ) : (
+        <div>
+          Please log in here
+          <LoginButton />
+        </div>
+      )}
     </>
   );
 };
