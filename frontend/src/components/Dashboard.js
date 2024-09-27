@@ -5,7 +5,7 @@ import LiveExorcism from "./LiveExorcism";
 import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import Pricing from "./Pricing";
-import AppointmentButton from "./AppointmentButton";
+import Appointments from "./Appointments";
 
 const headGif = require("../imgs/head.gif");
 const arrowGif = require("../imgs/arrowgif.gif");
@@ -27,7 +27,7 @@ const Dashboard = () => {
           </CenteredDiv>
           <Pricing />
           <LiveExorcism />
-          <AppointmentButton />
+          <Appointments />
         </>
       )}
     </div>

@@ -2,19 +2,19 @@ const { MongoClient, ObjectId } = require("mongodb");
 require("dotenv").config({ path: "../.env" });
 const { MONGO_URI } = process.env;
 
-const getAppointment = async (req, res) => {
+const deleteAppointment = async (req, res) => {
   const client = new MongoClient(MONGO_URI);
 
   try {
     await client.connect();
     const db = client.db("SASC");
     const { email } = req.params;
-    const result = await db.collection("appointments").findOne({ email });
+    const result = await db.collection("appointments").deleteOne({ email });
 
-    if (result) {
+    if (result.deletedCount > 0) {
       res.status(200).json({
         status: 200,
-        message: "Appointment edited!",
+        message: "Appointment deleted!",
         result,
       });
     } else {
@@ -32,5 +32,5 @@ const getAppointment = async (req, res) => {
 };
 
 module.exports = {
-  getAppointment,
+  deleteAppointment,
 };

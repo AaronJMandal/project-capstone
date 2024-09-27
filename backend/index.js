@@ -5,6 +5,8 @@ const cors = require("cors");
 require("dotenv").config({ path: "../.env" });
 const { submitAppointment } = require("./handlers/submitAppointment");
 const { getAppointment } = require("./handlers/getAppointment");
+const { modAppointment } = require("./handlers/modAppointment");
+const { deleteAppointment } = require("./handlers/deleteAppointment");
 
 const app = express();
 const corsOptions = {
@@ -89,8 +91,10 @@ app.get("/api/public", function (req, res) {
 });
 
 // Mongo endpoints
-app.get("/get-appointment", getAppointment);
+app.get("/get-appointment/:email", getAppointment);
 app.post("/book-appointment", submitAppointment);
+app.patch("/mod-appointment", modAppointment);
+app.delete("/del-appointment/:email", deleteAppointment);
 
 app.options("*", cors(corsOptions));
 

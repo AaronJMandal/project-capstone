@@ -2,7 +2,7 @@ const { MongoClient, ObjectId } = require("mongodb");
 require("dotenv").config({ path: "../.env" });
 const { MONGO_URI } = process.env;
 
-const submitAppointment = async (req, res) => {
+const modAppointment = async (req, res) => {
   const client = new MongoClient(MONGO_URI);
 
   try {
@@ -13,25 +13,28 @@ const submitAppointment = async (req, res) => {
 
     const check = await db.collection("appointments").findOne({ email });
 
-    if (check) {
+    if (!check) {
       res
         .status(400)
-        .json({ status: 400, error: "Appointment already exist!", check });
+        .json({ status: 400, error: "Appointment does not exist!", check });
     }
 
-    const appointment = {
-      email,
-      appointmentDate,
-      reason,
-      createdAt: new Date(),
+    const update = {
+      $set: {
+        appointmentDate,
+        reason,
+        updatedAt: new Date(),
+      },
     };
 
-    const result = await db.collection("appointments").insertOne(appointment);
+    const result = await db
+      .collection("appointments")
+      .updateOne({ email }, update);
 
     if (result) {
       res.status(200).json({
         status: 200,
-        message: "Appointment sent successfully!",
+        message: "Appointment edited successfully!",
         result,
       });
     } else {
@@ -49,5 +52,5 @@ const submitAppointment = async (req, res) => {
 };
 
 module.exports = {
-  submitAppointment,
+  modAppointment,
 };

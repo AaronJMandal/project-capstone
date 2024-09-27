@@ -1,6 +1,6 @@
-import styled from "styled-components";
 import { jwtDecode } from "jwt-decode";
-import { useState } from "react";
+import styled from "styled-components";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BasicDatePicker from "./BasicDatePicker";
 import { IoMdArrowRoundBack } from "react-icons/io";
@@ -9,15 +9,30 @@ import axios from "axios";
 
 const office = require("../imgs/office2.png");
 
-const BookAppointment = () => {
+const EditAppointment = () => {
   const navigate = useNavigate(null);
   const token = localStorage.getItem("id_token");
   const decodedToken = jwtDecode(token);
   const [startDate, setStartDate] = useState(null);
-  const [reason, setReason] = useState(null);
   const [data, setData] = useState(null);
-  const [submitCheck, setSubmitCheck] = useState(false);
+  const [error, setError] = useState(null);
+  const [reason, setReason] = useState("");
   const [result, setResult] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `/get-appointment/${decodedToken.email}`
+        );
+
+        setData(response);
+      } catch (error) {
+        setError(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleReasonChange = (e) => {
     setReason(e.target.value);
@@ -35,10 +50,9 @@ const BookAppointment = () => {
     };
 
     try {
-      const response = await axios.post("/book-appointment", data);
-      setData(response);
+      const response = await axios.patch("/mod-appointment", data);
       setResult(true);
-      console.log("Appointment sent!", response);
+      console.log("Appointment edited!", response);
     } catch (error) {
       console.error("Error found", error);
     }
@@ -67,12 +81,15 @@ const BookAppointment = () => {
               <Label htmlFor="reason">
                 Please explain your experience with spirits
               </Label>
-              <ReasonInput
-                required
-                id="reason"
-                onChange={handleReasonChange}
-                rows={10}
-              />
+              {data && (
+                <ReasonInput
+                  required
+                  id="reason"
+                  onChange={handleReasonChange}
+                  rows={10}
+                  defaultValue={data.data.result.reason}
+                ></ReasonInput>
+              )}
             </Inputs>
           </form>
           <button
@@ -86,19 +103,36 @@ const BookAppointment = () => {
           <button
             type="button"
             onClick={() => {
+              console.log(data);
+            }}
+          >
+            test data
+          </button>
+          <button
+            type="button"
+            onClick={() => {
               console.log(reason);
             }}
           >
             test reason
           </button>
+          <button
+            type="button"
+            onClick={() => {
+              console.log(data.data.message);
+            }}
+          >
+            test result
+          </button>
           <GridBoxButton
             type="submit"
             onClick={handleSubmitForm}
-            disabled={submitCheck || !reason || !startDate}
+            disabled={!reason || !startDate || result}
           >
-            Submit
+            Edit
             <CustomArrow />
           </GridBoxButton>
+
           {result && (
             <AppointmentResult>
               {data.data.message} Feel free to head back to the dashboard.
@@ -121,7 +155,7 @@ const BookAppointment = () => {
   );
 };
 
-export default BookAppointment;
+export default EditAppointment;
 
 const Container = styled.div`
   display: flex;
