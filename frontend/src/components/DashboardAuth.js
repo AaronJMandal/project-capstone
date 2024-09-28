@@ -6,11 +6,11 @@ import { FaUser } from "react-icons/fa";
 
 const DashboardAuth = () => {
   const token = localStorage.getItem("id_token");
-  console.log(token);
+
   if (token) {
     try {
       const decodedToken = jwtDecode(token);
-      console.log(decodedToken);
+
       return (
         <NavBar>
           <FaUser style={{ color: "#1a87af" }} />
