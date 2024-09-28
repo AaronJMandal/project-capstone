@@ -100,14 +100,6 @@ const SignupLogin = () => {
                   Signup
                 </Button>
                 <Button type="submit">Login</Button>
-                <Button
-                  type="button"
-                  onClick={() =>
-                    console.log(localStorage.getItem("access_token"))
-                  }
-                >
-                  Test Token
-                </Button>
               </>
             )}
           </Buttons>
