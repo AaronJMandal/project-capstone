@@ -38,8 +38,6 @@ const SignupLogin = () => {
           console.log("Login successful:", response.data);
           localStorage.setItem("access_token", response.data.accessToken);
           localStorage.setItem("id_token", response.data.idToken);
-          console.log(response.data.accessToken);
-          console.log(response.data.idToken);
           navigate("/dashboard");
         }
       } catch (error) {

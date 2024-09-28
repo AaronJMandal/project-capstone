@@ -95,38 +95,7 @@ const EditAppointment = () => {
               )}
             </Inputs>
           </form>
-          <button
-            type="button"
-            onClick={() => {
-              console.log(startDate.toDate());
-            }}
-          >
-            test date
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              console.log(data);
-            }}
-          >
-            test data
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              console.log(reason);
-            }}
-          >
-            test reason
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              console.log(data.data.message);
-            }}
-          >
-            test result
-          </button>
+
           <GridBoxButton
             type="submit"
             onClick={handleSubmitForm}
