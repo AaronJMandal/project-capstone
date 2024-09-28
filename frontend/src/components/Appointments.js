@@ -7,6 +7,7 @@ import { MdModeEdit } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 const dimple = require("../imgs/dimple.gif");
+const apiBaseUrl = "https://capstone-be-ajm.vercel.app";
 
 const Appointments = () => {
   const [data, setData] = useState(null);
@@ -30,7 +31,9 @@ const Appointments = () => {
   const handleDelete = () => {
     const fetchData = async () => {
       try {
-        const response = await axios.delete(`/del-appointment/${userEmail}`);
+        const response = await axios.delete(
+          `${apiBaseUrl}/api/delete-appointment/${userEmail}`
+        );
 
         setData(null);
         setRefreshKey(refreshKey + 1);
