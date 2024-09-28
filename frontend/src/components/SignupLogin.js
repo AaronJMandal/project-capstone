@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const background = require("../imgs/windowxp.png");
-const apiBaseUrl = "https://capstone-be-ajm.vercel.app";
+const apiBaseUrl = "https://backend-pi-ten-40.vercel.app";
 
 const SignupLogin = () => {
   const [formState, setFormState] = useState("signup");
