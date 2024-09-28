@@ -94,7 +94,7 @@ const BookAppointment = () => {
           <GridBoxButton
             type="submit"
             onClick={handleSubmitForm}
-            disabled={submitCheck || !reason || !startDate}
+            disabled={submitCheck || !reason || !startDate || result}
           >
             Submit
             <CustomArrow />
