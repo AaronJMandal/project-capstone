@@ -79,22 +79,7 @@ const BookAppointment = () => {
               />
             </Inputs>
           </form>
-          <button
-            type="button"
-            onClick={() => {
-              console.log(startDate.toDate());
-            }}
-          >
-            test date
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              console.log(reason);
-            }}
-          >
-            test reason
-          </button>
+
           <GridBoxButton
             type="submit"
             onClick={handleSubmitForm}
