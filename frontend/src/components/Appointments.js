@@ -44,7 +44,9 @@ const Appointments = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/get-appointment/${userEmail}`);
+        const response = await axios.get(
+          `https://capstone-be-ajm.vercel.app/api/get-appointment/${userEmail}`
+        );
 
         setData(response);
       } catch (error) {
