@@ -16,20 +16,18 @@ const Dashboard = () => {
   return (
     <div>
       <DashboardAuth />
-      {isAuthenticated && (
-        <>
-          <Container>
-            <img src={headGif} alt="Spirits and Such Consultation Office"></img>
-          </Container>
-          <IntroBoxes />
-          <CenteredDiv>
-            <img src={arrowGif} alt="arrow" style={{ height: "150px" }}></img>
-          </CenteredDiv>
-          <Pricing />
-          <LiveExorcism />
-          <Appointments />
-        </>
-      )}
+      <>
+        <Container>
+          <img src={headGif} alt="Spirits and Such Consultation Office"></img>
+        </Container>
+        <IntroBoxes />
+        <CenteredDiv>
+          <img src={arrowGif} alt="arrow" style={{ height: "150px" }}></img>
+        </CenteredDiv>
+        <Pricing />
+        <LiveExorcism />
+        <Appointments />
+      </>
     </div>
   );
 };
