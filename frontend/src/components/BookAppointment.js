@@ -8,6 +8,7 @@ import { RiSendPlaneFill } from "react-icons/ri";
 import axios from "axios";
 
 const office = require("../imgs/office2.png");
+const apiBaseUrl = "https://capstone-be-ajm.vercel.app";
 
 const BookAppointment = () => {
   const navigate = useNavigate(null);
@@ -35,7 +36,10 @@ const BookAppointment = () => {
     };
 
     try {
-      const response = await axios.post("/book-appointment", data);
+      const response = await axios.post(
+        `${apiBaseUrl}/api/book-appointment`,
+        data
+      );
       setData(response);
       setResult(true);
       console.log("Appointment sent!", response);

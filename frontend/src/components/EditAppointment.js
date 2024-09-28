@@ -8,7 +8,7 @@ import { RiSendPlaneFill } from "react-icons/ri";
 import axios from "axios";
 
 const office = require("../imgs/office2.png");
-
+const apiBaseUrl = "https://capstone-be-ajm.vercel.app";
 const EditAppointment = () => {
   const navigate = useNavigate(null);
   const token = localStorage.getItem("id_token");
@@ -23,7 +23,7 @@ const EditAppointment = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `/get-appointment/${decodedToken.email}`
+          `${apiBaseUrl}/api/get-appointment/${decodedToken.email}`
         );
 
         setData(response);
