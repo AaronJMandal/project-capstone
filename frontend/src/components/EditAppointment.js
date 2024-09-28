@@ -50,7 +50,10 @@ const EditAppointment = () => {
     };
 
     try {
-      const response = await axios.patch("/mod-appointment", data);
+      const response = await axios.patch(
+        `${apiBaseUrl}/api/mod-appointment`,
+        data
+      );
       setResult(true);
       console.log("Appointment edited!", response);
     } catch (error) {
