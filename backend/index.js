@@ -90,6 +90,10 @@ app.get("/api/public", function (req, res) {
   });
 });
 
+app.get("/", (req, res) => {
+  res.send("Welcome to the root path!");
+});
+
 // Mongo endpoints
 app.get("/get-appointment/:email", getAppointment);
 app.post("/book-appointment", submitAppointment);
@@ -103,3 +107,5 @@ const PORT = process.env.PORT || 3010;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+module.exports = app;
