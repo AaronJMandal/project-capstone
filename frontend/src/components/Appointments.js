@@ -130,7 +130,8 @@ const GridWrap = styled.div`
 
 const GridBox = styled.div`
   width: 800px;
-  height: 300px;
+  min-height: 300px;
+  height: fit-content;
   padding: 1.8em;
   background: ${(props) => props.bgcolor || "#E0EAF8"};
   color: #35e718;
