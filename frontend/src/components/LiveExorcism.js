@@ -19,7 +19,7 @@ const LiveExorcism = () => {
   };
 
   const handleFileChange = () => {
-    navigate("https://project-capstone-ten.vercel.app//exorcist");
+    navigate("/exorcist");
   };
 
   return (
