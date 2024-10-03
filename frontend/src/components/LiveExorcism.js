@@ -31,7 +31,8 @@ const LiveExorcism = () => {
             setIsClicked(true);
           }}
         >
-          Need an graphical live exocism? I'm the man for you!
+          Need an graphical live exocism?
+          <br></br> I'm the man for you!
           <CustomArrow />
         </GridBox>
 
@@ -79,7 +80,8 @@ const GridBox = styled.div`
   background: #9a42ff;
   font-weight: 500;
   font-size: 1.5em;
-  max-width: 30ch;
+  width: 500px;
+  height: 60px;
   border-radius: 3px;
   line-height: 110%;
   text-align: center;
