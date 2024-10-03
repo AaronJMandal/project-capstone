@@ -10,7 +10,7 @@ const Pricing = () => {
       <GridWrap>
         <GridBox bgcolor="#D69829">
           <img style={{ marginTop: "130px" }} alt="curse" src={curse}></img>
-          <h3> Let the clensing begin!!</h3>
+          <h3> Let the cleansing begin!!</h3>
           <br></br>
           <ul style={{ color: "black", lineHeight: "50px" }}>
             <li>
