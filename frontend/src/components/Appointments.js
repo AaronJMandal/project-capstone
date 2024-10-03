@@ -6,6 +6,8 @@ import { MdDelete } from "react-icons/md";
 import { MdModeEdit } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
+const forget = require("../imgs/forget.png");
+const contact = require("../imgs/contact.png");
 const dimple = require("../imgs/dimple.gif");
 const apiBaseUrl = "https://capstone-be-ajm.vercel.app";
 
@@ -70,11 +72,17 @@ const Appointments = () => {
     <div style={{ marginBottom: "100px" }}>
       <GridWrap>
         <GridBox bgc olor="#67919b">
+          {data ? (
+            <img src={forget} style={{ width: "300px" }}></img>
+          ) : (
+            <img src={contact} style={{ width: "500px" }}></img>
+          )}
           <div
             style={{
               color: "#080c0d",
               marginBottom: "10px",
               fontWeight: "bold",
+              margin: "10px 0",
             }}
           >
             Upcoming appointment!
