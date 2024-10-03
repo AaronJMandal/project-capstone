@@ -15,7 +15,7 @@ const Pricing = () => {
           <ul style={{ color: "black", lineHeight: "50px" }}>
             <li>
               <span style={{ color: "green" }}>20$</span> Option 1: Trial Course
-              (offers free Graphical Exorcism or a body clense)
+              (offers free Graphical Exorcism or a body cleanse)
             </li>
             <li>
               Option 2: All-Out Exorcism (For serious cases, billing will be
