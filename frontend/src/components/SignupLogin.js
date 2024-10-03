@@ -107,10 +107,17 @@ const SignupLogin = () => {
       </Container>
 
       <PasswordReq>
-        '* At least 8 characters in length\n' + '* Contain at least 3 of the
-        following 4 types of characters:\n' + ' * lower case letters (a-z)\n' +
-        ' * upper case letters (A-Z)\n' + ' * numbers (i.e. 0-9)\n' + ' *
-        special characters (e.g. !@#$%^&*)',
+        <ul>
+          <h2>Password requirements!</h2>
+          <li>At least 8 characters in length </li>
+        </ul>
+        <ul>
+          <h3>Contain at least 3 of the following 4 types of characters:</h3>
+          <li>lower case letters (a-z)</li>
+          <li>upper case letters (A-Z)</li>
+          <li>numbers (i.e. 0-9)</li>
+          <li>special characters (e.g. !@#$%^&*)</li>
+        </ul>
       </PasswordReq>
     </FormContainer>
   );
@@ -189,8 +196,21 @@ const Error = styled.div`
 `;
 
 const PasswordReq = styled.div`
-  position: absolute;
-  width: 30ch;
+  position: fixed;
+  width: 35ch;
   right: 10rem;
-  top: 5rem;
+  top: 10rem;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.1);
+  border-top: 10px solid blue;
+  background: white;
+  border-radius: 2px;
+  padding: 25px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    padding: 1rem 2rem;
+  }
 `;

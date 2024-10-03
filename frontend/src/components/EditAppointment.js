@@ -7,6 +7,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { RiSendPlaneFill } from "react-icons/ri";
 import axios from "axios";
 
+const enemy = require("../imgs/enemy.png");
 const office = require("../imgs/office2.png");
 const apiBaseUrl = "https://capstone-be-ajm.vercel.app";
 const EditAppointment = () => {
@@ -71,6 +72,7 @@ const EditAppointment = () => {
             }}
           />
           <form onSubmit={handleSubmitForm}>
+            <img src={enemy} style={{ width: "500px" }}></img>
             <h1>Reigen Arataka's Appointmnent Page </h1>
             <Inputs>
               <Label htmlFor="email">Email Address</Label>

@@ -8,9 +8,14 @@ const LandingPage = () => {
   return (
     <DivContainer>
       <img src={header} alt="header"></img>
-      <H2>The GREATEST psychic of the 21st century!!</H2>
+      <H2>
+        The <span style={{ color: "red" }}>GREATEST</span> psychic of the 21st
+        century!!
+      </H2>
       <img src={reig} style={{ maxWidth: "500px" }} alt="reig"></img>
-      <Link to="/login">➡➡ ENTER HERE ⬅⬅</Link>
+      <Link style={{ fontSize: "3em", padding: "30px" }} to="/login">
+        ➡➡ ENTER HERE ⬅⬅
+      </Link>
     </DivContainer>
   );
 };
@@ -26,4 +31,6 @@ const DivContainer = styled.div`
 
 const H2 = styled.h2`
   margin: 10px;
+  font-family: "Tiny5", sans-serif;
+  font-size: 3em;
 `;
