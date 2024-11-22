@@ -19,7 +19,7 @@ The reference sites I found have captured the essence of this project. Drawing i
 ## References
 
 - [EsperAdmin](https://github.com/EsperAdmin/spiritsandsuch).
-- [Unable to find owner](https://github.com/EsperAdmin/spiritsandsuch).
+- [Unable to find owner](https://spiritsandsuch.lol/index.html).
 
 
 ## Contact
